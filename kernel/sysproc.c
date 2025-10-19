@@ -136,3 +136,22 @@ sys_halt(void)
   outw(0x604, 0x2000); // QEMU/Bochs APM/ACPI shutdown
   return 0;
 }
+
+#define MAX_SYSCALL 35
+extern int syscall_counts[];
+
+// System call to return the execution count of another system call
+int
+sys_getcount(void)
+{
+  int syscall_num;
+  
+  if (argint(0, &syscall_num) < 0)
+    return -1;
+
+  if (syscall_num <= 0 || syscall_num >= MAX_SYSCALL) {
+    return -1;
+  }
+  
+  return syscall_counts[syscall_num];
+}

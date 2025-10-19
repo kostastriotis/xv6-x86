@@ -26,3 +26,5 @@
 #define SYS_getfavnum 28
 
 #define SYS_halt 29
+
+#define SYS_getcount 30

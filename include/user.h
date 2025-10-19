@@ -29,6 +29,8 @@ int getfavnum(void);
 
 int halt(void);
 
+int getcount(int syscall_num);
+
 // ulib.c
 int stat(char*, struct stat*);
 char* strcpy(char*, char*);

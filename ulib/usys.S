@@ -35,3 +35,5 @@ SYSCALL(settickets)
 SYSCALL(getfavnum)
 
 SYSCALL(halt)
+
+SYSCALL(getcount)

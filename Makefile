@@ -183,6 +183,7 @@ USER_PROGS=\
 	mycolor\
 	testfavnum\
 	shutdown\
+	testcount\
 
 UPROGS := $(addprefix fs/,$(USER_PROGS))
 
