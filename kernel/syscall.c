@@ -146,6 +146,8 @@ extern int sys_uptime(void);
 extern int sys_getpinfo(void);
 extern int sys_settickets(void);
 
+extern int sys_getfavnum(void);
+
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
 [SYS_exit]    sys_exit,
@@ -169,7 +171,8 @@ static int (*syscalls[])(void) = {
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
 [SYS_getpinfo]    sys_getpinfo,
-[SYS_settickets]    sys_settickets
+[SYS_settickets]    sys_settickets,
+[SYS_getfavnum]    sys_getfavnum,
 };
 
 void

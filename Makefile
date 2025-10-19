@@ -181,6 +181,7 @@ USER_PROGS=\
 	zombie\
 	lotteryschedtest\
 	mycolor\
+	testfavnum\
 
 UPROGS := $(addprefix fs/,$(USER_PROGS))
 

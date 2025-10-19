@@ -31,3 +31,5 @@ SYSCALL(sleep)
 SYSCALL(uptime)
 SYSCALL(getpinfo)
 SYSCALL(settickets)
+
+SYSCALL(getfavnum)

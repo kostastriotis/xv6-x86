@@ -121,3 +121,10 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+// System call to return your favorite number
+int
+sys_getfavnum(void)
+{
+  return 7;
+}
