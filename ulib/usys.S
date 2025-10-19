@@ -33,3 +33,5 @@ SYSCALL(getpinfo)
 SYSCALL(settickets)
 
 SYSCALL(getfavnum)
+
+SYSCALL(halt)

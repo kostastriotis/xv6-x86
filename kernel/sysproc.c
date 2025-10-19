@@ -128,3 +128,11 @@ sys_getfavnum(void)
 {
   return 7;
 }
+
+// System call to shut down the system (QEMU/Bochs APM/ACPI method)
+int
+sys_halt(void)
+{
+  outw(0x604, 0x2000); // QEMU/Bochs APM/ACPI shutdown
+  return 0;
+}
