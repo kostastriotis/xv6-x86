@@ -37,3 +37,5 @@ SYSCALL(getfavnum)
 SYSCALL(halt)
 
 SYSCALL(getcount)
+
+SYSCALL(killrandom)

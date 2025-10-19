@@ -31,6 +31,8 @@ int halt(void);
 
 int getcount(int syscall_num);
 
+int killrandom(void);
+
 // ulib.c
 int stat(char*, struct stat*);
 char* strcpy(char*, char*);

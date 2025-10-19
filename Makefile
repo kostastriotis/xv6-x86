@@ -184,6 +184,7 @@ USER_PROGS=\
 	testfavnum\
 	shutdown\
 	testcount\
+	killrandompid\
 
 UPROGS := $(addprefix fs/,$(USER_PROGS))
 

@@ -155,3 +155,63 @@ sys_getcount(void)
   
   return syscall_counts[syscall_num];
 }
+
+// The following functions define a portable implementation of rand and srand.
+
+static unsigned long int next = 1;  // NB: "unsigned long int" is assumed to be 32 bits wide
+
+int rand(void)  // RAND_MAX assumed to be 32767
+{
+    next = next * 1103515245 + 12345;
+    return (unsigned int) (next / 65536) % 32768;
+}
+
+void srand(unsigned int seed)
+{
+    next = seed;
+}
+
+
+// kernel/sysproc.c (προσθήκη στο τέλος του αρχείου)
+
+// System call to terminate a random process.
+int
+sys_killrandom(void)
+{
+  struct proc *p;
+  int process_pids[NPROC];
+  int num_active = 0;
+  int target_index;
+  int pid_to_kill = -1;
+
+  acquire(&ptable.lock);
+  
+  if (next == 1) { 
+      acquire(&tickslock);
+      srand(ticks);
+      release(&tickslock);
+  }
+
+  for (p = ptable.proc; p < &ptable.proc[NPROC]; p++) {
+      if (p->state != UNUSED && p != proc && p->pid > 1) {
+          process_pids[num_active++] = p->pid;
+      }
+  }
+
+  if (num_active == 0) {
+      release(&ptable.lock);
+      return -1;
+  }
+
+  target_index = rand() % num_active; 
+  pid_to_kill = process_pids[target_index];
+
+  release(&ptable.lock);
+
+  if (pid_to_kill > 0 && kill(pid_to_kill) == 0) {
+
+      return pid_to_kill;
+  }
+
+  return -1;
+}

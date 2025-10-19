@@ -152,6 +152,8 @@ extern int sys_halt(void);
 
 extern int sys_getcount(void);
 
+extern int sys_killrandom(void);
+
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
 [SYS_exit]    sys_exit,
@@ -179,6 +181,7 @@ static int (*syscalls[])(void) = {
 [SYS_getfavnum]    sys_getfavnum,
 [SYS_halt]    sys_halt,
 [SYS_getcount]    sys_getcount,
+[SYS_killrandom]  sys_killrandom,
 };
 
 #define MAX_SYSCALL 35
